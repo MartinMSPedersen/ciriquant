@@ -1,16 +1,25 @@
 FROM python:2.7-onbuild
 COPY . /usr/src/app
 WORKDIR /usr/src/app
-RUN apt-get update && apt-get upgrade && apt-get install -y unzip
 
-ADD https://sourceforge.net/projects/ciri/files/CIRIquant/CIRIquant_v0.2.0.tar.gz . 
-ADD https://sourceforge.net/projects/ciri/files/CIRIquant/test_data.tar.gz .
+RUN apt-get update && apt-get install -y unzip
+
+# download and extract all needed software
+RUN wget https://sourceforge.net/projects/bio-bwa/files/bwa-0.7.17.tar.bz2 
+RUN tar -xvf bwa-0.7.17.tar.bz2 && rm bwa-0.7.17.tar.bz2
+
+RUN wget https://sourceforge.net/projects/ciri/files/CIRIquant/CIRIquant_v0.2.0.tar.gz 
+RUN tar -xvf CIRIquant_v0.2.0.tar.gz && rm CIRIquant_v0.2.0.tar.gz
+
+RUN wget https://sourceforge.net/projects/ciri/files/CIRIquant/test_data.tar.gz 
+RUN tar -xvf test_data.tar.gz && rm test_data.tar.gz
+
 ADD https://github.com/samtools/samtools/archive/1.9.zip .
 RUN unzip 1.9.zip && rm 1.9.zip
-ADD https://sourceforge.net/projects/bio-bwa/files/bwa-0.7.17.tar.bz2 .
 RUN wget ftp://ftp.ccb.jhu.edu/pub/infphilo/hisat2/downloads/hisat2-2.1.0-source.zip 
 RUN unzip hisat2-2.1.0-source.zip && rm hisat2-2.1.0-source.zip 
-ADD http://ccb.jhu.edu/software/stringtie/dl/stringtie-2.0.3.tar.gz .
+RUN wget http://ccb.jhu.edu/software/stringtie/dl/stringtie-2.0.3.tar.gz
+RUN tar -xvf stringtie-2.0.3.tar.gz && rm stringtie-2.0.3.tar.gz
 ADD https://github.com/samtools/htslib/archive/1.9.zip .
 RUN unzip 1.9.zip && rm 1.9.zip
 
