@@ -8,7 +8,7 @@ ADD https://sourceforge.net/projects/ciri/files/CIRIquant/test_data.tar.gz .
 ADD https://github.com/samtools/samtools/archive/1.9.zip .
 RUN unzip 1.9.zip && rm 1.9.zip
 ADD https://sourceforge.net/projects/bio-bwa/files/bwa-0.7.17.tar.bz2 .
-ADD ftp://ftp.ccb.jhu.edu/pub/infphilo/hisat2/downloads/hisat2-2.1.0-source.zip .
+RUN wget ftp://ftp.ccb.jhu.edu/pub/infphilo/hisat2/downloads/hisat2-2.1.0-source.zip 
 RUN unzip hisat2-2.1.0-source.zip && rm hisat2-2.1.0-source.zip 
 ADD http://ccb.jhu.edu/software/stringtie/dl/stringtie-2.0.3.tar.gz .
 ADD https://github.com/samtools/htslib/archive/1.9.zip .
