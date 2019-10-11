@@ -50,3 +50,5 @@ RUN python setup.py install
 
 # travis 
 RUN mkdir -p /home/travis/miniconda/envs/CIRIquant/ && ln -s /bin /home/travis/miniconda/envs/CIRIquant/
+
+WORKDIR /usr/src/app
