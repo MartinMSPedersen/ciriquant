@@ -1,7 +1,7 @@
 FROM python:2.7-onbuild
 COPY . /usr/src/app
 WORKDIR /usr/src/app
-RUN apt-get update && apt-get install -y unzip
+RUN apt-get update && apt-get upgrade && apt-get install -y unzip
 
 ADD https://sourceforge.net/projects/ciri/files/CIRIquant/CIRIquant_v0.2.0.tar.gz . 
 ADD https://sourceforge.net/projects/ciri/files/CIRIquant/test_data.tar.gz .
