@@ -41,8 +41,7 @@ RUN autoreconf && ./configure && make && make install
 
 # samtools
 WORKDIR /usr/src/app/samtools-1.9
-RUN autoreconf && ./configure && make && make install
-RUN ln -s $PWD/samtools /bin
+RUN autoreconf && ./configure && make && make install && ln -s $PWD/samtools /bin
 
 # CIRIQuant
 WORKDIR /usr/src/app/CIRIquant
