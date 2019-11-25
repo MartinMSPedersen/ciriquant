@@ -3,6 +3,7 @@ COPY . /usr/src/app
 WORKDIR /usr/src/app
 
 RUN apt-get update && apt-get install -y unzip
+RUN apt-get install -y tmux
 
 # download and extract all needed software
 RUN wget https://sourceforge.net/projects/bio-bwa/files/bwa-0.7.17.tar.bz2 
